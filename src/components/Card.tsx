@@ -3,8 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 
-import { useTheme } from '../contexts/themeContext'
-
 const Card: React.FC<CardInterface> = ({ current }) => {
     const [favorites, setFavorites] = useState<number[]>([])
     const [save, setSave] = useState(false)
@@ -45,7 +43,6 @@ const Card: React.FC<CardInterface> = ({ current }) => {
     )
 }
 
-const { themeMode } = useTheme()
 const theme = {
     light: {
         colors: {
@@ -104,13 +101,11 @@ const Poster = styled.img`
     border-radius: 0.25rem;
 `;
 
-
-
 const Title = styled.p`
-    color: ${theme[themeMode].text};
+    color: white;
     font-size: 1.2rem;
     text-align: center;
-    margin: 0.5rem;
+    margin: 1.75rem 0.5rem 1rem 0.5rem;
 `;
 const Overview = styled.p`
     color: rgba(255, 255, 255, 0.5);

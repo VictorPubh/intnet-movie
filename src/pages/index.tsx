@@ -5,20 +5,21 @@ import styled from 'styled-components'
 import Popular from '../components/Popular'
 import Header from '../components/Header'
 
-// Context
-import ThemeContext from '../contexts/themeContext'
-
 const App: React.FC = () => {
 
   return (
-    <ThemeContext>
+    <Container>
         <Header />
         <Body>
             <Popular />
         </Body>
-    </ThemeContext>
+    </Container>
   )
 }
+
+const Container = styled.div`
+    background-color: rgb(12, 12, 15);
+`;
 
 const Body = styled.h1`
   font-family: arial;
