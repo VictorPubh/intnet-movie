@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from 'react'
+import styled from 'styled-components'
 
-function App() {
+// Components
+import Popular from './components/Popular'
+import Header from './components/Header'
+
+const App: React.FC = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Body>
+      <Header />
+      <Popular />
+    </Body>
+  )
 }
 
-export default App;
+const Body = styled.h1`
+  font-family: arial;
+  padding: 2rem;
+`;
+
+export default App
