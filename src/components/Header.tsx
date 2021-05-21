@@ -1,20 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'react-router-dom'
 
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 const Header: React.FC = () => {
     return (
-        <Navbar expand="lg">
+      <Container>
+        <Navbar variant="dark" expand="lg">
           <Navbar.Brand>
             <Logotipo src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-                <NavLink to="/about">About</NavLink>
+                <Nav.Link href="/about">Lançamentos</Nav.Link>
+                <Nav.Link href="/about">Favoritados</Nav.Link>
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="e.g, Intocáveis" className="mr-sm-2" />
@@ -22,6 +23,7 @@ const Header: React.FC = () => {
             </Form>
           </Navbar.Collapse>
         </Navbar>
+      </Container>
     )
 }
 
@@ -29,8 +31,9 @@ const Logotipo = styled.img`
   width: 15rem;
 `;
 
-const NavLink = styled(Link)`
-    color: white;
+const Container = styled.div`
+  padding: 2rem 2rem 0 2rem;
+
 `;
 
 export default Header
