@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import axios from 'axios'
+import { getMostPopular } from '../services/tmdb'
 
 import Card from './Card'
 import Loading from './Loading'
@@ -10,33 +10,26 @@ const env = {
     TMDB_URI: 'https://api.themoviedb.org/3' // process.env.TMDB_URI
 }
 
-const Popular: React.FC = () => {
-  const [popular, setPopular] = useState<movie[]|null>(null)
+const Deck: React.FC<OptionsDeck> = ({ options }) => {
+  const [popular, setPopular] = useState<Movie[]|null>(null)
 
   useEffect(() => {
     const fetchData = async () => {
-      await getData()
+      const items = await getMostPopular()
+      setPopular(items)
     }
 
-    fetchData()
-  }, [])
-
-  const getData = () => {
-    axios.get(`${env.TMDB_URI}/movie/popular`, {
-      params: { api_key: env.TMDB_KEY }
-    })
-    .then((response) => {
-      const { data }: { data: tmdbResponse } = response
-      const { results }: { results: movie[] } = data
-      setPopular(results)
-    })
-    .catch((error) => console.error(error))
-  }
+    if (options?.items != null) {
+      setPopular(options.items)
+    } else {
+      fetchData()
+    }
+  }, [options])
 
   return (
         <Container>
           {(popular != null) ? (popular.map((movie, i) =>
-              <Card current={movie} key={i} />
+              <Card current={{ ...movie, ...options }} key={i} />
           )) : <Loading />}
         </Container>
     )
@@ -49,4 +42,4 @@ const Container = styled.div`
   gap: 2rem;
 `;
 
-export default Popular
+export default Deck

@@ -6,7 +6,7 @@ import styled from 'styled-components'
 const Loading: React.FC = () => {
     return (
         <Container>
-            <Spinner icon={faSpinner} spin />
+            <Spinner icon={faSpinner} size="2x" spin />
         </Container>
     )
 }
@@ -14,7 +14,7 @@ const Loading: React.FC = () => {
 const Container = styled.div`
     display: flex;
     width: 100%;
-    height: 80vh;
+    height: 75vh;
     justify-content: center;
     align-items: center;
 `;

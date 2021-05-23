@@ -14,8 +14,8 @@ const Header: React.FC = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-                <Nav.Link href="/about">Lançamentos</Nav.Link>
-                <Nav.Link href="/about">Favoritos</Nav.Link>
+                <Nav.Link href="/">Lançamentos</Nav.Link>
+                <Nav.Link href="/favorites">Favoritos</Nav.Link>
             </Nav>
             <Form inline>
               <FormControl type="text" placeholder="e.g, Intocáveis" className="mr-sm-2" />
@@ -32,7 +32,7 @@ const Logotipo = styled.img`
 `;
 
 const Container = styled.div`
-  padding: 2rem 2rem 0 2rem;
+  padding: 2rem;
 
 `;
 
