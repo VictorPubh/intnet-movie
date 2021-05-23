@@ -32,7 +32,6 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
     function toLike() {
         const favorites = getStorage('favorites')
         
-        let temp = favorites?.split(',')
         if(favorites) {
             setStorage('favorites', favorites+','+id)
         } else {

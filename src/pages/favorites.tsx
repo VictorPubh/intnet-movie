@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { getStorage } from '../services/storage'
 import styled from 'styled-components'
 
+import GlobalStyle from '../styles/globalStyles'
+
 // Components
 import Deck from '../components/Deck'
 import Header from '../components/Header'
@@ -11,13 +13,16 @@ const movies = getStorage('movies')?.split('|').map((r) => JSON.parse(r))
 const Favorites: React.FC = () => {
   return (
     <Container>
+      <GlobalStyle />
         <Header />
         {(movies != null) ? (
             <Deck options={{
                 closed: true,
                 items: movies
             }} />
-        ) : <NoFavorites> Você não possui filmes salvos </NoFavorites>  }
+        ) : <NoFavorites>
+            Você não possui filmes salvos
+          </NoFavorites>  }
     </Container>
   )
 }
@@ -28,7 +33,11 @@ const Container = styled.div`
 `;
 
 const NoFavorites = styled.div`
-  min-heght: 100vh;
+  min-height: 88vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   color: white;
 `;
 

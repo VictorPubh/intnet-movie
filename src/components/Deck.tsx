@@ -37,7 +37,6 @@ const Deck: React.FC<OptionsDeck> = ({ options }) => {
 
 const Container = styled.div`
   display: flex;
-  margin: 0 auto;
   flex-wrap: wrap;
   gap: 2rem;
 `;
