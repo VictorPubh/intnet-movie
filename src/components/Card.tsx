@@ -33,6 +33,7 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
         const favorites = getStorage('favorites')
         
         if(favorites) {
+            // @ts-ignore
             setStorage('favorites', favorites+','+id)
         } else {
             setStorage('favorites', id)
