@@ -27,7 +27,7 @@ const Deck: React.FC<OptionsDeck> = ({ options }) => {
   }, [options])
 
   return (
-        <Container>
+        <Container className="deck">
           {(popular != null) ? (popular.map((movie, i) =>
               <Card current={{ ...movie, ...options }} key={i} />
           )) : <Loading />}

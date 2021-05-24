@@ -20,9 +20,7 @@ const Favorites: React.FC = () => {
                 closed: true,
                 items: movies
             }} />
-        ) : <NoFavorites>
-            Você não possui filmes salvos
-          </NoFavorites>  }
+        ) : <NoFavorites> Você não possui filmes salvos </NoFavorites>  }
     </Container>
   )
 }
@@ -32,7 +30,7 @@ const Container = styled.div`
   height: auto;
 `;
 
-const NoFavorites = styled.div`
+const NoFavorites = styled.p`
   min-height: 88vh;
   width: 100%;
   display: flex;
