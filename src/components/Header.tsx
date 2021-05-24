@@ -2,7 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap'
+import Autosuggest from 'react-autosuggest'
 import 'bootstrap/dist/css/bootstrap.min.css'
+
+const movies = {
+  id: 1234,
+  name: 'Intocáveis',
+  poster_path: 'https://image.tmdb.org/t/p/w300/zR5Ry633w1lEXk9RtODaj5QLGLN.jpg'
+}
 
 const Header: React.FC = () => {
     return (

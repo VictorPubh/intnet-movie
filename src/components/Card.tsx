@@ -21,7 +21,10 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
     } = current
 
     useEffect(() => {
-        const movies = getStorage('movies')?.split('|').map((m) => JSON.parse(m))
+        const movies = getStorage('movies')?.split('|').map((m) => {
+            console.log(m)
+            return JSON.parse(m)
+        })
         movies?.map((movie) => {
             if(id == movie.id) {
                 setSave(true)
@@ -57,6 +60,13 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
         setSave(true)
     }
 
+    const formatMovieStorage = (movieObj) => {
+        return JSON.stringify(movieObj)
+            .replace('[', '')
+            .replace(']', '')
+            .replace('},{', '}|{')
+    }
+
     function toUnlike() {
         const favorites = getStorage('favorites')?.split(',')
         const movies = getStorage('movies')?.split('|').map((m) => JSON.parse(m))
@@ -66,7 +76,7 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
         movies?.splice(i, 1)
 
         setStorage('favorites', favorites)
-        setStorage('movies', JSON.stringify(movies)?.replace('[', '').replace(']', ''))
+        setStorage('movies', formatMovieStorage(movies))
         setSave(false)
     }
     
