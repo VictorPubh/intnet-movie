@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { getStorage, setStorage } from '../services/storage'
 
