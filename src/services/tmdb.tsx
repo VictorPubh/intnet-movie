@@ -5,13 +5,14 @@ export const env = {
     TMDB_URI: 'https://api.themoviedb.org/3' // process.env.TMDB_URI
 }
 
-export const get = async (path: string, query: string) => {
-    let params = {
+export const get = async (path: string, query?: string) => {
+    let params: {} = {
         api_key: env.TMDB_KEY,
         language: 'pt-BR'
     }
     
-    if(query) {
+    if(query != null) {
+        // @ts-ignore
         params = { ...params, query }
     }
 
@@ -30,15 +31,15 @@ export const getMostPopular = async () => {
     return results
 }
 
-export const getMoviesDetails = async (id: number) => {
+export const getMovieDetails = async (id: string|string[]) => {
     return await get(`/movie/${id}`)
 }
 
-export const getCollectionDetails = async (id: number) => {
+export const getCollectionDetails = async (id: string|string[]) => {
     return await get(`/collection/${id}`)
 }
 
-export const getSimilar = async (movie_id: number) => {
+export const getSimilar = async (movie_id: string|string[]) => {
     const { results } = await get(`/movie/${movie_id}/similar`)
     return results
 }

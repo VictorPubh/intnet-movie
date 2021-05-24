@@ -1,9 +1,7 @@
-import React, { useState, useCallback } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import Link from 'next/link'
-
 import { Navbar, Nav } from 'react-bootstrap'
-import { searchMovies } from '../services/tmdb'
 import Search from '../components/Search'
 import GlobalStyle from '../styles/globalStyles'
 

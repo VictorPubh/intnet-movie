@@ -6,11 +6,11 @@ interface TMDBResponse {
 }
 
 interface MCOptions {
-    refresh?: true;
+    refresh?: boolean;
 }
 
 interface MovieComponent {
-    current: Movie | MCOptions;
+    current: Movie & MCOptions;
 }
 
 interface Genre {

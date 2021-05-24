@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import { getStorage } from '../services/storage'
+import { getMovies } from '../services/storage'
 import styled from 'styled-components'
 
-// Components
 import Deck from '../components/Deck'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
-
-const refreshStorage = () => {
-  return getStorage('movies')?.split('|').map((r) => JSON.parse(r))
-}
 
 const Favorites: React.FC = () => {
   const [movies, setMovies] = useState<Movie[]>([])
 
   useEffect(() => {
-    const storage = refreshStorage()
+    const storage = getMovies()
     setMovies(storage)
   }, [setMovies])
 

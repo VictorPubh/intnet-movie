@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Card from './Card'
 
 const Movie: React.FC<MovieComponent> = ({ current }) => {
-    let formatDate = (date) => {
+    let formatDate = (date: string) => {
         return date.split('-').reverse().join('/')
     } 
 
@@ -39,7 +39,7 @@ const Movie: React.FC<MovieComponent> = ({ current }) => {
                 <Title>{ title }</Title>
                 <Overview> { overview }</Overview>
                 <Genres>
-                    { genres.map(genre => <Genre variant="danger">{genre.name}</Genre>)}
+                    { genres?.map(genre => <Genre variant="danger">{genre.name}</Genre>)}
                 </Genres>
                 <Date variant="dark">
                     <Icon icon={faCalendar} /> Lançamento: { formatDate(release_date) }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import { getMoviesDetails, getSimilar } from '../../services/tmdb'
+import { getMovieDetails, getSimilar } from '../../services/tmdb'
 import styled from 'styled-components'
 
 import Header from '../../components/Header'
@@ -19,7 +19,7 @@ const App: React.FC = () => {
   useEffect(() => {
       const fetchData = async () => {
         try {
-          const details = await getMoviesDetails(id)
+          const details = await getMovieDetails(id)
           setMovie(details)
         } catch(err) {
           console.log(err)

@@ -4,7 +4,7 @@ import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
 import { useRouter } from 'next/router'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
-import { getStorage, setStorage } from '../services/storage'
+import { getStorage, setStorage, getMovies } from '../services/storage'
 
 const Card: React.FC<MovieComponent> = ({ current }) => {
     const [save, setSave] = useState(false)
@@ -21,9 +21,7 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
     } = current
 
     useEffect(() => {
-        const movies = getStorage('movies')?.split('|').map((m) => {
-            return JSON.parse(m)
-        })
+        const movies: Movie[] = getMovies()
         movies?.map((movie) => {
             if(id == movie.id) {
                 setSave(true)
@@ -42,7 +40,7 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
         }
 
         const movies = getStorage('movies')
-        const currentMovie: Movie = {
+        const currentMovie = {
             id,
             title,
             overview,
@@ -65,11 +63,11 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
 
     function toUnlike() {
         const favorites = getStorage('favorites')?.split(',')
-        const movies = getStorage('movies')?.split('|').map((m) => JSON.parse(m))
+        const movies: Movie[] = getMovies()
 
-        const i = favorites?.indexOf(id)
-        favorites?.splice(i, 1)
-        movies?.splice(i, 1)
+        const i = favorites?.indexOf(id!.toString())
+        favorites?.splice(i!, 1)
+        movies?.splice(i!, 1)
 
         setStorage('favorites', favorites)
         setStorage('movies', formatMovieStorage(movies))
@@ -80,8 +78,8 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
         }
     }
 
-    const formatMovieStorage = (moviesObj) => {
-        return JSON.stringify(moviesObj)
+    const formatMovieStorage = (moviesStorage: Movie[]) => {
+        return JSON.stringify(moviesStorage)
             .replace('[', '')
             .replace(']', '')
             .replaceAll('},{', '}|{')
