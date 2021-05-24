@@ -5,11 +5,13 @@
 /.pnp
 .pnp.js
 
-# NextJS
 .next
+package-lock.json
+yarn.lock
 
 # testing
 /coverage
+
 
 # production
 /build

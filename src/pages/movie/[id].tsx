@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { getMoviesDetails, getSimilar } from '../../services/tmdb'
 import styled from 'styled-components'
 
-// Components
 import Header from '../../components/Header'
 import Deck from '../../components/Deck'
 import Movie from '../../components/Movie'
 import Loading from '../../components/Loading'
-import { getMoviesDetails, getSimilar } from '../../services/tmdb'
+import Footer from '../../components/Footer'
 
 const App: React.FC = () => {  
   const [movie, setMovie] = useState<Movie|null>(null)
@@ -40,13 +40,14 @@ const App: React.FC = () => {
         <Header />
           {(movie != null) ? (
             <Flex>
-              <Movie current={movie} key="main" />
+              <Movie current={movie} key={movie.id} />
               <Deck options={{
                 closed: true,
                 items: similar
               }}/>
             </Flex>
           ) : <Loading />}
+          <Footer />
     </Container>
   )
 }

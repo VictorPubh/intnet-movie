@@ -5,8 +5,12 @@ interface TMDBResponse {
     total_results: number;
 }
 
+interface MCOptions {
+    refresh?: true;
+}
+
 interface MovieComponent {
-    current: Movie;
+    current: Movie | MCOptions;
 }
 
 interface Genre {
@@ -72,6 +76,7 @@ interface Movie {
 interface ItemsDeck {
     closed?: boolean;
     items?: Movie[] | null;
+    refresh?: boolean;
 }
 
 interface OptionsDeck {

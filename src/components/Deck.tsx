@@ -5,11 +5,6 @@ import { getMostPopular } from '../services/tmdb'
 import Card from './Card'
 import Loading from './Loading'
 
-const env = {
-    TMDB_KEY: '985b6732c229227d090a82fbed387761', // process.env.TMDB_KEY
-    TMDB_URI: 'https://api.themoviedb.org/3' // process.env.TMDB_URI
-}
-
 const Deck: React.FC<OptionsDeck> = ({ options }) => {
   const [popular, setPopular] = useState<Movie[]|null>(null)
 

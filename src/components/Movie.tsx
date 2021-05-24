@@ -29,7 +29,11 @@ const Movie: React.FC<MovieComponent> = ({ current }) => {
     return (
         <Container className="justify-content-md-center">
             <CardWrap lg="4">
-                <Card current={{...current, closed: true }}/>
+                <Card current={{
+                    ...current,
+                    closed: true,
+                    refresh: true
+                }}/>
             </CardWrap>
             <Wrapper lg="4" className="justify-content-md-center">
                 <Title>{ title }</Title>

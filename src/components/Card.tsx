@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar, faHeart } from '@fortawesome/free-solid-svg-icons'
 import styled from 'styled-components'
-import { useRouter } from 'next/router'
+import Router, { useRouter } from 'next/router'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { getStorage, setStorage } from '../services/storage'
 
@@ -22,7 +22,6 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
 
     useEffect(() => {
         const movies = getStorage('movies')?.split('|').map((m) => {
-            console.log(m)
             return JSON.parse(m)
         })
         movies?.map((movie) => {
@@ -58,13 +57,10 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
             setStorage('movies', JSON.stringify(currentMovie))
         }
         setSave(true)
-    }
-
-    const formatMovieStorage = (movieObj) => {
-        return JSON.stringify(movieObj)
-            .replace('[', '')
-            .replace(']', '')
-            .replace('},{', '}|{')
+        
+        if(current.refresh) {
+            router.reload()
+        }
     }
 
     function toUnlike() {
@@ -78,6 +74,17 @@ const Card: React.FC<MovieComponent> = ({ current }) => {
         setStorage('favorites', favorites)
         setStorage('movies', formatMovieStorage(movies))
         setSave(false)
+
+        if(current.refresh) {
+            router.reload()
+        }
+    }
+
+    const formatMovieStorage = (moviesObj) => {
+        return JSON.stringify(moviesObj)
+            .replace('[', '')
+            .replace(']', '')
+            .replaceAll('},{', '}|{')
     }
     
     function goMovie() {
