@@ -7,7 +7,7 @@ export const env = {
 
 export const get = async (path: string, query?: string) => {
     let params: {} = {
-        api_key: env.TMDB_KEY,
+        api_key: process.env.TMDB_KEY,
         language: 'pt-BR'
     }
     
@@ -17,7 +17,7 @@ export const get = async (path: string, query?: string) => {
     }
 
     try {
-        const { data } = await axios.get(`${env.TMDB_URI}${path}`, {
+        const { data } = await axios.get(`${process.env.TMDB_URI}${path}`, {
             params
         })
         return data
